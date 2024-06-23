@@ -1,0 +1,22 @@
+{% extends "investment_manager/base.html" %}
+{% block content %}
+    <div class="col-md-6 offset-md-3">
+        <div class="text-center">
+            <img src="https://media.licdn.com/dms/image/D4D0BAQEEBB9Fi79S_w/company-logo_200_200/0/1704903397669?e=1727308800&v=beta&t=0bPKMD5ovWmlNTW8E8frtxtt46JDQqrViRPyeKKP5MM" class="rounded" height="100">
+            <br/>
+            <br/>
+            <h1>Welcome Back!</h1>
+        </div>            
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <p class="text-center">Sign in to view your client portfolio.</p>
+                <input type="text" class="form-control" name="username" placeholder="Username" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-secondary">Sign In</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "investment_manager/base.html" %}
+{% block content %}
+    <div class="col-md-6 offset-md-3">
+        <div class="text-center">
+            <img src="https://media.licdn.com/dms/image/D4D0BAQEEBB9Fi79S_w/company-logo_200_200/0/1704903397669?e=1727308800&v=beta&t=0bPKMD5ovWmlNTW8E8frtxtt46JDQqrViRPyeKKP5MM" class="rounded" height="100">
+            <br/>
+            <br/>
+            <h1>Register!</h1><br/>
+        </div>            
+        <form method="POST" action="">
+            {% csrf_token %}
+            {% if form.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    Your Form Has Errors!
+                    {% for filed in form %}
+                        {% if field.errors %}
+                            {{ field.errors }}
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+            
+            {{ form.as_p }}
+
+            <br/>
+            <button type="submit" class="btn btn-secondary">Register</button>
+        </form>
+
+    </div>
+{% endblock content %}
