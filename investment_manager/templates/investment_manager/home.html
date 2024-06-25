@@ -1,43 +1,42 @@
 {% extends "investment_manager/base.html" %}
 {% block content %}
 
-<div>
-    <table class="table table-striped table-bordered table-sm table-hover caption-top">
-        <caption><h4>List of Clients</h4></caption>
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Client Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">NRC</th>
-            <th scope="col">Risk Level</th>
-            <th scope="col">Financial Goal</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Frequency</th>
-            <th scope="col">Final Target</th>
-            <th scope="col">Currency</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% if clients %}
-                {% for client in clients %}
-                    <tr>
-                        <td>{{ client.name }}</td>
-                        <td>{{ client.email }}</td>
-                        <td>{{ client.phone }}</td>
-                        <td>{{ client.client_nrc }}</td>
-                        <td>{{ client.risk_level.capitalize }}</td>
-                        <td>{{ client.financial_goal.capitalize }}</td>
-                        <td>{{ client.expected_monthly_contribution }}</td>
-                        <td>{{ client.contribution_frequency.capitalize }}</td>
-                        <td>{{ client.target_amount }}</td>
-                        <td>{{ client.currency.upper }}</td>
-                    </tr>
-                    {% endfor %}
-            {% endif %}
-        </tbody>
-    </table>
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="clientDataLink">Client Data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="contributionDataLink">Contribution Data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="investmentDataLink">Investment Data</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body" id="cardContent">
+        <!-- Content will be loaded here -->
+    </div>
 </div>
-        
-    
-{% endblock content %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Load Client Data by default
+        $('#cardContent').load("{% url 'client' %}");
+
+        // Handle link clicks
+        $('#clientDataLink').click(function() {
+            $('#cardContent').load("{% url 'client' %}");
+        });
+        $('#contributionDataLink').click(function() {
+            $('#cardContent').load("{% url 'client_contribution' %}");
+        });
+        $('#investmentDataLink').click(function() {
+            $('#cardContent').load("{% url 'client_investment' %}");
+        });
+    });
+</script>
+
+{% endblock %}

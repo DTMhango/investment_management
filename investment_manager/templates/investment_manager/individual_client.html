@@ -1,0 +1,98 @@
+{% extends "investment_manager/base.html" %}
+{% block content %}
+<div class="container">
+<div class="card col-sm-8">
+    <h5 class="card-header">Client Information:</h5>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Manager:</strong></td>
+                <td>{{ client_data.get_manager_full_name }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Client Full Name:</strong></td>
+                <td>{{ client_data.full_name }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Email Address:</strong></td>
+                <td><a href="mailto:{{ client_data.email }}">{{ client_data.email }}</a></td>
+              </tr>
+
+              <tr>
+                <td><strong>Phone Number:</strong></td>
+                <td>{{ client_data.phone }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>City of Residence:</strong></td>
+                <td>{{ client_data.city }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Date of Birth:</strong></td>
+                <td>{{ client_data.date_of_birth}}</td>
+              </tr>
+
+              <tr>
+                <td><strong>National ID:</strong></td>
+                <td>{{ client_data.client_nrc }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Date of Joining:</strong></td>
+                <td>{{ client_data.date_of_joining }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Risk Tolerance:</strong></td>
+                <td>{{ client_data.get_risk_level_display }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Method of Contribution:</strong></td>
+                <td>{{ client_data.get_contribution_type_display }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Contribution Frequency:</strong></td>
+                <td>{{ client_data.get_contribution_frequency_display }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Client Financial Goal:</strong></td>
+                <td>{{ client_data.get_financial_goal_display }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Client Target Amount:</strong></td>
+                <td>{{ client_data.get_currency_display }} {{ client_data.format_target }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>Expected {{ client_data.get_contribution_frequency_display }} Amount:</strong></td>
+                <td>{{ client_data.get_currency_display }} {{ client_data.format_contribution }}</td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        
+          <a href="{% url 'create_contribution' client_data.id %}" class="btn btn-primary">Add Contribution</a> 
+          <a href="{% url 'create_investment' client_data.id %}" class="btn btn-primary">Add Investment</a>
+      
+    </div>
+  </div><br>
+
+  <a href="{% url 'home' %}" class="btn btn-primary">Back <</a>
+</div>
+{% endblock %}

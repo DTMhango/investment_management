@@ -1,0 +1,19 @@
+{% extends "investment_manager/base.html" %}
+{% block content %}
+<div class="container">
+<div class="card col-sm-8">
+    <h5 class="card-header">Update Records:</h5>
+    <div class="card-body">
+        <form method="POST" action="{% url 'update_records' %}">
+
+            {% csrf_token %}
+                <p>
+                    Run the update Server command at least <strong>once a week</strong> and <strong>before report generation</strong> to update expected return computations.
+                </p>
+            <br/>
+            <button type="submit" class="btn btn-secondary">Update Records</button>
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+<div>
+    <table class="table table-striped table-bordered table-sm table-hover caption-top">
+        <!-- <caption><h4>List of Contributions</h4></caption> -->
+        <thead class="table-primary">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Client Name</th>
+            <th scope="col">Date Received</th>
+            <th scope="col">Amount Received</th>
+            <th scope="col">Payment Method</th>
+            <th scope="col">Fees</th>
+            <th scope="col">Investable Amount</th>
+            <th scope="col">Manager</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% if contributions %}
+                {% for contribution in contributions %}
+                    <tr>
+                        <td>{{ contribution.id }}</td>
+                        <td>{{ contribution.client }}</td>
+                        <td>{{ contribution.date }}</td>
+                        <td>{{ contribution.contribution_amount }}</td>
+                        <td>{{ contribution.get_payment_method_display }}</td>
+                        <td>{{ contribution.fees }}</td>
+                        <td>{{ contribution.investable_amount }}</td>
+                        <td>{{ contribution.get_manager_full_name }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+

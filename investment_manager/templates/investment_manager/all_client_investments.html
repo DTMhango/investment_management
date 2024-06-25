@@ -1,0 +1,38 @@
+<div>
+    <table class="table table-striped table-bordered table-sm table-hover caption-top">
+        <!-- <caption><h4>List of Investments</h4></caption> -->
+        <thead class="table-primary">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Client</th>
+            <th scope="col">Investment Vehicle</th>
+            <th scope="col">Invested Amount</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">Maturity Date</th>
+            <th scope="col">Expected Growth Rate</th>
+            <th scope="col">Expected Current Value</th>
+            <th scope="col">Manager</th>
+            <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% if investments %}
+                {% for investment in investments %}
+                    <tr>
+                        <td>{{ investment.id }}</td>
+                        <td>{{ investment.client }}</td>
+                        <td>{{ investment.get_investment_type_display }}</td>
+                        <td>{{ investment.investment_amount }}</td>
+                        <td>{{ investment.start_date }}</td>
+                        <td>{{ investment.maturity_date }}</td>
+                        <td>{{ investment.expected_annual_growth_rate_percentage }}</td>
+                        <td>{{ investment.expected_current_value }}</td>
+                        <td>{{ investment.get_manager_full_name }}</td>
+                        <td>{{ investment.get_status_display }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
