@@ -4,7 +4,7 @@ This project is an Investment management tool for fund managers to monitor their
 
 ##### Client:
 
-The client model represents the clients that a managed by the application. This comprises client personal information and additional details such as reasons for investing, target returns and methods of investing - regular periodic installments or lump-sum investments.
+The client model represents the clients that are managed by the application. This comprises client personal information and additional details such as reasons for investing, target returns and methods of investing - regular periodic installments or lump-sum investments.
 
 ##### Contribution:
 
